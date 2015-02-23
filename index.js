@@ -124,7 +124,6 @@ $(document).ready(
 				app.form_init();
 
 			});
-			
 
 			// 수정 클릭
 			$("button[name=b_mod]").click(function() {
@@ -134,7 +133,6 @@ $(document).ready(
 
 			});
 
-			
 			// 수정 후 확인
 			$("button[name=modify]").click(function() {
 
