@@ -3,30 +3,30 @@ var data = [];
 $(document).ready(
 		function() {
 
+            (function() {
+
+                $.post("./data.json", function(result) {
+
+                    data = result;
+
+                    console.log("init", data);
+
+                    $("table[name=table01] tbody tr").remove();
+
+                    _.each(result, function(obj) {
+
+                        var $tr = $("<tr>" + "<td>" + obj.name + "</td>"
+                        + "<td>" + obj.age + "</td>" + "<td>"
+                        + obj.email + "</td>" + "</tr>");
+
+                        $tr.appendTo("table[name=table01] tbody");
+
+                    });
+
+                }, "json");
+            })();
+
 			var app = {
-				// 초기 리스트
-				init_list : function() {
-
-					$.post("./data.json", function(result) {
-
-						data = result;
-
-						console.log("init", data);
-						
-						$("table[name=table01] tbody tr").remove();
-
-						_.each(result, function(obj) {
-
-							var $tr = $("<tr>" + "<td>" + obj.name + "</td>"
-									+ "<td>" + obj.age + "</td>" + "<td>"
-									+ obj.email + "</td>" + "</tr>");
-
-							$tr.appendTo("table[name=table01] tbody");
-
-						});
-
-					}, "json");
-				},
 
 				// 공통 리스트
 				common_list : function(data) {
@@ -75,9 +75,6 @@ $(document).ready(
 				}
 
 			};
-
-			// 초기 리스트 호출
-			app.init_list();
 
 			var iselect = [];
 
